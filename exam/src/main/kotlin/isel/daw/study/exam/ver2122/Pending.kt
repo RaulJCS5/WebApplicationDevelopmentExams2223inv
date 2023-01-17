@@ -1,6 +1,5 @@
 package isel.daw.study.exam.ver2122
 
-import isel.daw.study.exam.PendingService
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpFilter
 import jakarta.servlet.http.HttpServletRequest
@@ -8,11 +7,28 @@ import jakarta.servlet.http.HttpServletResponse
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Configuration
 import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+import java.util.concurrent.locks.ReentrantLock
+import kotlin.concurrent.withLock
 
+@Service
+class PendingService{
+    private val pendingRequests = mutableMapOf<String, Int>()
+    private val lock = ReentrantLock()
+    fun addPending(p:String){
+        lock.withLock {
+            pendingRequests[p] = pendingRequests.getOrDefault(p, 0) + 1
+        }
+    }
+    fun getPending():MutableMap<String,Int>{
+        return pendingRequests
+    }
+}
+/*
 @Component
 class PendingFilter(
     val pendingService: PendingService
@@ -60,4 +76,4 @@ class PendingConfiguration : WebMvcConfigurer {
         registry.addInterceptor(PendingInterceptor())
     }
 }
-
+*/
