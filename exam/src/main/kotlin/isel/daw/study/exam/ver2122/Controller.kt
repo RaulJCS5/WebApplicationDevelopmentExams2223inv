@@ -8,10 +8,18 @@ import org.springframework.web.bind.annotation.*
 class Controller(
     val pendingService: PendingService,
     val statusService: StatusService,
+    val failureService: FailureService,
     val demoService: DemoService
 ) {
-    @GetMapping("/demo")
+    @GetMapping("/failure")
     fun getFailures(): ResponseEntity<*> {
+        return ResponseEntity
+            .accepted()
+            .body(failureService.getFailureObject())
+    }
+
+    @GetMapping("/demo")
+    fun getDemos(): ResponseEntity<*> {
         return ResponseEntity
             .accepted()
             .body(demoService.getDemoObject())
