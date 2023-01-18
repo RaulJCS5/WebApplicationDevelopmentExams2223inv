@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+//https://dev.to/pallymore/clean-up-async-requests-in-useeffect-hooks-90h
+//https://stackoverflow.com/questions/31061838/how-do-i-cancel-an-http-fetch-request/47250621#47250621
 
 export const ComponentMethodHttpWithAbort = ({ uri }: { uri: string }) => {
   const [data, setData] = useState(undefined)

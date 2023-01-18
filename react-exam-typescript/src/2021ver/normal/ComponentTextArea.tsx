@@ -10,7 +10,7 @@ export const ComponentTextArea = () => {
   return (
     <div>
       <input type="text" value={uri} onChange={(event) => { setUri(event.target.value) }} />
-      {/*<ComponentMethodHttpWithIsCancelled uri={uri}></ComponentMethodHttpWithIsCancelled>*/}
+      <ComponentMethodHttpWithIsCancelled uri={uri}></ComponentMethodHttpWithIsCancelled>
       <ComponentMethodHttpWithAbort uri={uri}></ComponentMethodHttpWithAbort>
     </div>
   )
