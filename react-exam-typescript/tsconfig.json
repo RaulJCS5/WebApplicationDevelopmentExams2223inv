@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/2021ver/ComponentMethodHttpWithAbort.tsx"  ]
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { ComponentMethodHttpWithAbort } from './ComponentMethodHttpWithAbort'
 import { ComponentMethodHttpWithIsCancelled } from './ComponentMethodHttpWithIsCancelled'
 
 //https://api.chucknorris.io/jokes/random
@@ -9,7 +10,8 @@ export const ComponentTextArea = () => {
   return (
     <div>
       <input type="text" value={uri} onChange={(event) => { setUri(event.target.value) }} />
-      <ComponentMethodHttpWithIsCancelled uri={uri}></ComponentMethodHttpWithIsCancelled>
+      {/*<ComponentMethodHttpWithIsCancelled uri={uri}></ComponentMethodHttpWithIsCancelled>*/}
+      <ComponentMethodHttpWithAbort uri={uri}></ComponentMethodHttpWithAbort>
     </div>
   )
 }
