@@ -7,8 +7,16 @@ import org.springframework.web.bind.annotation.*
 @RestController("/")
 class Controller(
     val pendingService: PendingService,
-    val statusService: StatusService
+    val statusService: StatusService,
+    val demoService: DemoService
 ) {
+    @GetMapping("/demo")
+    fun getFailures(): ResponseEntity<*> {
+        return ResponseEntity
+            .accepted()
+            .body(demoService.getDemoObject())
+    }
+
     @GetMapping("/status/{method}")
     fun getStatus(@PathVariable method: String): ResponseEntity<*> {
         return statusService.getStatusMethod("/$method")
