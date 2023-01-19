@@ -15,36 +15,36 @@ import org.springframework.web.servlet.HandlerInterceptor
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
-@RestController("/especial")
-class HeaderController {
+@RestController("/recurso")
+class AnonymousController {
 
-    @GetMapping("/header")
-    fun getHeader():ResponseEntity<*>{
+    @GetMapping("/anonymous")
+    fun getAnonymous():ResponseEntity<*>{
         return ResponseEntity
             .accepted()
-            .body("Get header")
+            .body("Get Anonymous")
     }
 }
 
 @Service
-class HeaderService{
+class AnonymousService{
 
 }
 /*
 @Component
-class HeaderFilter(
-    val headerService: HeaderService
+class AnonymousFilter(
+    val AnonymousService: AnonymousService
 ):HttpFilter(){
     companion object{
-        val logger = LoggerFactory.getLogger(HeaderFilter::class.java)
+        val logger = LoggerFactory.getLogger(AnonymousFilter::class.java)
     }
     override fun doFilter(request: HttpServletRequest?, response: HttpServletResponse?, chain: FilterChain?) {
-        logger.info("HeaderFilter")
+        logger.info("AnonymousFilter")
         chain?.doFilter(request, response)
     }
 }
 
-class HeaderInterceptor : HandlerInterceptor{
+class AnonymousInterceptor : HandlerInterceptor{
     companion object{
         val logger = LoggerFactory.getLogger(HandlerInterceptor::class.java)
     }
@@ -55,12 +55,12 @@ class HeaderInterceptor : HandlerInterceptor{
 }
 
 @Configuration
-class HeaderConfiguration : WebMvcConfigurer {
+class AnonymousConfiguration : WebMvcConfigurer {
     companion object{
-        val logger = LoggerFactory.getLogger(HeaderConfiguration::class.java)
+        val logger = LoggerFactory.getLogger(AnonymousConfiguration::class.java)
     }
     override fun addInterceptors(registry: InterceptorRegistry) {
-        logger.info("HeaderConfiguration")
-        registry.addInterceptor(HeaderInterceptor())
+        logger.info("AnonymousConfiguration")
+        registry.addInterceptor(AnonymousInterceptor())
     }
 }*/

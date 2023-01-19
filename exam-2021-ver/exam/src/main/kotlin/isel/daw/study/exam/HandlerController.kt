@@ -15,36 +15,36 @@ import org.springframework.web.servlet.HandlerInterceptor
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
-@RestController("/especial")
-class HeaderController {
+@RestController("/normal")
+class HandlerController {
 
-    @GetMapping("/header")
-    fun getHeader():ResponseEntity<*>{
+    @GetMapping("/handler")
+    fun getHandler():ResponseEntity<*>{
         return ResponseEntity
             .accepted()
-            .body("Get header")
+            .body("Get Handler")
     }
 }
 
 @Service
-class HeaderService{
+class HandlerService{
 
 }
-/*
+
 @Component
-class HeaderFilter(
-    val headerService: HeaderService
+class HandlerFilter(
+    val HandlerService: HandlerService
 ):HttpFilter(){
     companion object{
-        val logger = LoggerFactory.getLogger(HeaderFilter::class.java)
+        val logger = LoggerFactory.getLogger(HandlerFilter::class.java)
     }
     override fun doFilter(request: HttpServletRequest?, response: HttpServletResponse?, chain: FilterChain?) {
-        logger.info("HeaderFilter")
+        logger.info("HandlerFilter")
         chain?.doFilter(request, response)
     }
 }
 
-class HeaderInterceptor : HandlerInterceptor{
+class HandlerInterceptor : HandlerInterceptor{
     companion object{
         val logger = LoggerFactory.getLogger(HandlerInterceptor::class.java)
     }
@@ -55,12 +55,12 @@ class HeaderInterceptor : HandlerInterceptor{
 }
 
 @Configuration
-class HeaderConfiguration : WebMvcConfigurer {
+class HandlerConfiguration : WebMvcConfigurer {
     companion object{
-        val logger = LoggerFactory.getLogger(HeaderConfiguration::class.java)
+        val logger = LoggerFactory.getLogger(HandlerConfiguration::class.java)
     }
     override fun addInterceptors(registry: InterceptorRegistry) {
-        logger.info("HeaderConfiguration")
-        registry.addInterceptor(HeaderInterceptor())
+        logger.info("HandlerConfiguration")
+        registry.addInterceptor(HandlerInterceptor())
     }
-}*/
+}
