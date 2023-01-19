@@ -1,6 +1,5 @@
 package isel.daw.study.exam
 
-import isel.daw.study.exam.HandlerInterceptor.Companion.KEY
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpFilter
 import jakarta.servlet.http.HttpServletRequest
@@ -21,19 +20,19 @@ import kotlin.concurrent.withLock
 
 @RestController("/normal")
 class HandlerController(
-    val handlerService: HandlerService
+    //val handlerService: HandlerService
 ) {
     @GetMapping("/handlers")
     fun getHandler():ResponseEntity<*>{
         return ResponseEntity
             .accepted()
-            .body(handlerService.getHandler())
+            .body("handlerService.getHandler()")
     }
     @GetMapping("/handlerslist")
     fun getHandler1():ResponseEntity<*>{
         return ResponseEntity
             .accepted()
-            .body(handlerService.getHandlerList())
+            .body("handlerService.getHandlerList()")
     }
     @GetMapping("/demo")
     fun getDemo():ResponseEntity<*>{
@@ -42,6 +41,7 @@ class HandlerController(
             .body("For demo only")
     }
 }
+/*
 @Service
 class HandlerService{
     val mapHandler = mutableMapOf<String,MutableList<Long>>()
@@ -116,4 +116,4 @@ class HandlerConfiguration : WebMvcConfigurer {
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(HandlerInterceptor())
     }
-}
+}*/
