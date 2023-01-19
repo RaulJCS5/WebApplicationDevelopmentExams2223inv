@@ -1,5 +1,6 @@
 package isel.daw.study.exam
 
+import isel.daw.study.exam.HandlerInterceptor.Companion.KEY
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpFilter
 import jakarta.servlet.http.HttpServletRequest
@@ -41,7 +42,7 @@ class HandlerController(
             .body("For demo only")
     }
 }
-/*
+
 @Service
 class HandlerService{
     val mapHandler = mutableMapOf<String,MutableList<Long>>()
@@ -116,4 +117,4 @@ class HandlerConfiguration : WebMvcConfigurer {
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(HandlerInterceptor())
     }
-}*/
+}

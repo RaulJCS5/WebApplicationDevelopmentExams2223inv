@@ -18,17 +18,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @RestController("/recurso")
 class AnonymousController(
-    val anonymousService: AnonymousService
+    //val anonymousService: AnonymousService
 ) {
 
     @GetMapping("/anonymous")
     fun getAnonymous():ResponseEntity<*>{
         return ResponseEntity
             .accepted()
-            .body(anonymousService.getAnonymous())
+            .body("anonymousService.getAnonymous()")
     }
 }
-
+/*
 @Service
 class AnonymousService{
     private val mapAnonymous= mutableMapOf<String,Int>()
@@ -80,4 +80,4 @@ class AnonymousConfiguration : WebMvcConfigurer {
         logger.info("AnonymousConfiguration")
         registry.addInterceptor(AnonymousInterceptor())
     }
-}
+}*/
